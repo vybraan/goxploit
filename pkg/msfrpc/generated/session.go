@@ -24,7 +24,11 @@ func (c *Session) List(token string) (map[string]interface{}, error) {
 		return nil, errors.New("Unprocessable Content")
 	}
 	if errMsg, ok := resp["error_message"]; ok {
-		return nil, errors.New(errMsg.(string))
+		errMsgBytes, ok := errMsg.([]uint8)
+		if !ok {
+			return nil, errors.New("error_message is not a string")
+		}
+		return nil, errors.New(string(errMsgBytes))
 	}
 	return resp, nil
 }
@@ -38,7 +42,11 @@ func (c *Session) Stop(token string, sessionId string) (map[string]interface{}, 
 		return nil, errors.New("Unprocessable Content")
 	}
 	if errMsg, ok := resp["error_message"]; ok {
-		return nil, errors.New(errMsg.(string))
+		errMsgBytes, ok := errMsg.([]uint8)
+		if !ok {
+			return nil, errors.New("error_message is not a string")
+		}
+		return nil, errors.New(string(errMsgBytes))
 	}
 	return resp, nil
 }
@@ -52,7 +60,11 @@ func (c *Session) ShellRead(token string, sessionId string, ReadPointer string) 
 		return nil, errors.New("Unprocessable Content")
 	}
 	if errMsg, ok := resp["error_message"]; ok {
-		return nil, errors.New(errMsg.(string))
+		errMsgBytes, ok := errMsg.([]uint8)
+		if !ok {
+			return nil, errors.New("error_message is not a string")
+		}
+		return nil, errors.New(string(errMsgBytes))
 	}
 	return resp, nil
 }
@@ -66,7 +78,11 @@ func (c *Session) ShellWrite(token string, sessionId string, InputCommand string
 		return nil, errors.New("Unprocessable Content")
 	}
 	if errMsg, ok := resp["error_message"]; ok {
-		return nil, errors.New(errMsg.(string))
+		errMsgBytes, ok := errMsg.([]uint8)
+		if !ok {
+			return nil, errors.New("error_message is not a string")
+		}
+		return nil, errors.New(string(errMsgBytes))
 	}
 	return resp, nil
 }
@@ -80,7 +96,11 @@ func (c *Session) MeterpreterWrite(token string, sessionId string, ps string) (m
 		return nil, errors.New("Unprocessable Content")
 	}
 	if errMsg, ok := resp["error_message"]; ok {
-		return nil, errors.New(errMsg.(string))
+		errMsgBytes, ok := errMsg.([]uint8)
+		if !ok {
+			return nil, errors.New("error_message is not a string")
+		}
+		return nil, errors.New(string(errMsgBytes))
 	}
 	return resp, nil
 }
@@ -94,7 +114,11 @@ func (c *Session) MeterpreterRead(token string, sessionId string) (map[string]in
 		return nil, errors.New("Unprocessable Content")
 	}
 	if errMsg, ok := resp["error_message"]; ok {
-		return nil, errors.New(errMsg.(string))
+		errMsgBytes, ok := errMsg.([]uint8)
+		if !ok {
+			return nil, errors.New("error_message is not a string")
+		}
+		return nil, errors.New(string(errMsgBytes))
 	}
 	return resp, nil
 }
@@ -108,7 +132,11 @@ func (c *Session) MeterpreterRunSingle(token string, sessionId string, ps string
 		return nil, errors.New("Unprocessable Content")
 	}
 	if errMsg, ok := resp["error_message"]; ok {
-		return nil, errors.New(errMsg.(string))
+		errMsgBytes, ok := errMsg.([]uint8)
+		if !ok {
+			return nil, errors.New("error_message is not a string")
+		}
+		return nil, errors.New(string(errMsgBytes))
 	}
 	return resp, nil
 }
@@ -122,7 +150,11 @@ func (c *Session) MeterpreterScript(token string, sessionId string, scriptName s
 		return nil, errors.New("Unprocessable Content")
 	}
 	if errMsg, ok := resp["error_message"]; ok {
-		return nil, errors.New(errMsg.(string))
+		errMsgBytes, ok := errMsg.([]uint8)
+		if !ok {
+			return nil, errors.New("error_message is not a string")
+		}
+		return nil, errors.New(string(errMsgBytes))
 	}
 	return resp, nil
 }
@@ -136,7 +168,11 @@ func (c *Session) MeterpreterSessionDetach(token string, sessionId string) (map[
 		return nil, errors.New("Unprocessable Content")
 	}
 	if errMsg, ok := resp["error_message"]; ok {
-		return nil, errors.New(errMsg.(string))
+		errMsgBytes, ok := errMsg.([]uint8)
+		if !ok {
+			return nil, errors.New("error_message is not a string")
+		}
+		return nil, errors.New(string(errMsgBytes))
 	}
 	return resp, nil
 }
@@ -150,7 +186,11 @@ func (c *Session) MeterpreterTabs(token string, sessionId string, InputLine stri
 		return nil, errors.New("Unprocessable Content")
 	}
 	if errMsg, ok := resp["error_message"]; ok {
-		return nil, errors.New(errMsg.(string))
+		errMsgBytes, ok := errMsg.([]uint8)
+		if !ok {
+			return nil, errors.New("error_message is not a string")
+		}
+		return nil, errors.New(string(errMsgBytes))
 	}
 	return resp, nil
 }
@@ -164,7 +204,11 @@ func (c *Session) CompatibleModules(token string, sessionId string) (map[string]
 		return nil, errors.New("Unprocessable Content")
 	}
 	if errMsg, ok := resp["error_message"]; ok {
-		return nil, errors.New(errMsg.(string))
+		errMsgBytes, ok := errMsg.([]uint8)
+		if !ok {
+			return nil, errors.New("error_message is not a string")
+		}
+		return nil, errors.New(string(errMsgBytes))
 	}
 	return resp, nil
 }
@@ -178,7 +222,11 @@ func (c *Session) ShellUpgrade(token string, sessionId string, IpAddress string,
 		return nil, errors.New("Unprocessable Content")
 	}
 	if errMsg, ok := resp["error_message"]; ok {
-		return nil, errors.New(errMsg.(string))
+		errMsgBytes, ok := errMsg.([]uint8)
+		if !ok {
+			return nil, errors.New("error_message is not a string")
+		}
+		return nil, errors.New(string(errMsgBytes))
 	}
 	return resp, nil
 }
@@ -192,7 +240,11 @@ func (c *Session) RingClear(token string, sessionId string) (map[string]interfac
 		return nil, errors.New("Unprocessable Content")
 	}
 	if errMsg, ok := resp["error_message"]; ok {
-		return nil, errors.New(errMsg.(string))
+		errMsgBytes, ok := errMsg.([]uint8)
+		if !ok {
+			return nil, errors.New("error_message is not a string")
+		}
+		return nil, errors.New(string(errMsgBytes))
 	}
 	return resp, nil
 }
@@ -206,7 +258,11 @@ func (c *Session) RingLast(token string, sessionId string) (map[string]interface
 		return nil, errors.New("Unprocessable Content")
 	}
 	if errMsg, ok := resp["error_message"]; ok {
-		return nil, errors.New(errMsg.(string))
+		errMsgBytes, ok := errMsg.([]uint8)
+		if !ok {
+			return nil, errors.New("error_message is not a string")
+		}
+		return nil, errors.New(string(errMsgBytes))
 	}
 	return resp, nil
 }
@@ -220,7 +276,11 @@ func (c *Session) RingPut(token string, sessionId string, InputCommand string) (
 		return nil, errors.New("Unprocessable Content")
 	}
 	if errMsg, ok := resp["error_message"]; ok {
-		return nil, errors.New(errMsg.(string))
+		errMsgBytes, ok := errMsg.([]uint8)
+		if !ok {
+			return nil, errors.New("error_message is not a string")
+		}
+		return nil, errors.New(string(errMsgBytes))
 	}
 	return resp, nil
 }

@@ -24,7 +24,11 @@ func (c *Module) Exploits(token string) (map[string]interface{}, error) {
 		return nil, errors.New("Unprocessable Content")
 	}
 	if errMsg, ok := resp["error_message"]; ok {
-		return nil, errors.New(errMsg.(string))
+		errMsgBytes, ok := errMsg.([]uint8)
+		if !ok {
+			return nil, errors.New("error_message is not a string")
+		}
+		return nil, errors.New(string(errMsgBytes))
 	}
 	return resp, nil
 }
@@ -38,7 +42,11 @@ func (c *Module) Auxiliary(token string) (map[string]interface{}, error) {
 		return nil, errors.New("Unprocessable Content")
 	}
 	if errMsg, ok := resp["error_message"]; ok {
-		return nil, errors.New(errMsg.(string))
+		errMsgBytes, ok := errMsg.([]uint8)
+		if !ok {
+			return nil, errors.New("error_message is not a string")
+		}
+		return nil, errors.New(string(errMsgBytes))
 	}
 	return resp, nil
 }
@@ -52,7 +60,11 @@ func (c *Module) Post(token string) (map[string]interface{}, error) {
 		return nil, errors.New("Unprocessable Content")
 	}
 	if errMsg, ok := resp["error_message"]; ok {
-		return nil, errors.New(errMsg.(string))
+		errMsgBytes, ok := errMsg.([]uint8)
+		if !ok {
+			return nil, errors.New("error_message is not a string")
+		}
+		return nil, errors.New(string(errMsgBytes))
 	}
 	return resp, nil
 }
@@ -66,7 +78,11 @@ func (c *Module) Payloads(token string) (map[string]interface{}, error) {
 		return nil, errors.New("Unprocessable Content")
 	}
 	if errMsg, ok := resp["error_message"]; ok {
-		return nil, errors.New(errMsg.(string))
+		errMsgBytes, ok := errMsg.([]uint8)
+		if !ok {
+			return nil, errors.New("error_message is not a string")
+		}
+		return nil, errors.New(string(errMsgBytes))
 	}
 	return resp, nil
 }
@@ -80,7 +96,11 @@ func (c *Module) Encoders(token string) (map[string]interface{}, error) {
 		return nil, errors.New("Unprocessable Content")
 	}
 	if errMsg, ok := resp["error_message"]; ok {
-		return nil, errors.New(errMsg.(string))
+		errMsgBytes, ok := errMsg.([]uint8)
+		if !ok {
+			return nil, errors.New("error_message is not a string")
+		}
+		return nil, errors.New(string(errMsgBytes))
 	}
 	return resp, nil
 }
@@ -94,7 +114,11 @@ func (c *Module) Nops(token string) (map[string]interface{}, error) {
 		return nil, errors.New("Unprocessable Content")
 	}
 	if errMsg, ok := resp["error_message"]; ok {
-		return nil, errors.New(errMsg.(string))
+		errMsgBytes, ok := errMsg.([]uint8)
+		if !ok {
+			return nil, errors.New("error_message is not a string")
+		}
+		return nil, errors.New(string(errMsgBytes))
 	}
 	return resp, nil
 }
@@ -108,7 +132,11 @@ func (c *Module) Info(token string, ModuleType string, ModuleName string) (map[s
 		return nil, errors.New("Unprocessable Content")
 	}
 	if errMsg, ok := resp["error_message"]; ok {
-		return nil, errors.New(errMsg.(string))
+		errMsgBytes, ok := errMsg.([]uint8)
+		if !ok {
+			return nil, errors.New("error_message is not a string")
+		}
+		return nil, errors.New(string(errMsgBytes))
 	}
 	return resp, nil
 }
@@ -122,7 +150,11 @@ func (c *Module) Options(token string, ModuleType string, ModuleName string) (ma
 		return nil, errors.New("Unprocessable Content")
 	}
 	if errMsg, ok := resp["error_message"]; ok {
-		return nil, errors.New(errMsg.(string))
+		errMsgBytes, ok := errMsg.([]uint8)
+		if !ok {
+			return nil, errors.New("error_message is not a string")
+		}
+		return nil, errors.New(string(errMsgBytes))
 	}
 	return resp, nil
 }
@@ -136,7 +168,11 @@ func (c *Module) CompatiblePayloads(token string, ModuleName string) (map[string
 		return nil, errors.New("Unprocessable Content")
 	}
 	if errMsg, ok := resp["error_message"]; ok {
-		return nil, errors.New(errMsg.(string))
+		errMsgBytes, ok := errMsg.([]uint8)
+		if !ok {
+			return nil, errors.New("error_message is not a string")
+		}
+		return nil, errors.New(string(errMsgBytes))
 	}
 	return resp, nil
 }
@@ -150,7 +186,11 @@ func (c *Module) TargetCompatiblePayloads(token string, ModuleName string, Sessi
 		return nil, errors.New("Unprocessable Content")
 	}
 	if errMsg, ok := resp["error_message"]; ok {
-		return nil, errors.New(errMsg.(string))
+		errMsgBytes, ok := errMsg.([]uint8)
+		if !ok {
+			return nil, errors.New("error_message is not a string")
+		}
+		return nil, errors.New(string(errMsgBytes))
 	}
 	return resp, nil
 }
@@ -164,7 +204,11 @@ func (c *Module) CompatibleSessions(token string, ModuleName string) (map[string
 		return nil, errors.New("Unprocessable Content")
 	}
 	if errMsg, ok := resp["error_message"]; ok {
-		return nil, errors.New(errMsg.(string))
+		errMsgBytes, ok := errMsg.([]uint8)
+		if !ok {
+			return nil, errors.New("error_message is not a string")
+		}
+		return nil, errors.New(string(errMsgBytes))
 	}
 	return resp, nil
 }
@@ -178,7 +222,11 @@ func (c *Module) Encode(token string, Data string, EncoderModule string, Options
 		return nil, errors.New("Unprocessable Content")
 	}
 	if errMsg, ok := resp["error_message"]; ok {
-		return nil, errors.New(errMsg.(string))
+		errMsgBytes, ok := errMsg.([]uint8)
+		if !ok {
+			return nil, errors.New("error_message is not a string")
+		}
+		return nil, errors.New(string(errMsgBytes))
 	}
 	return resp, nil
 }
@@ -192,7 +240,11 @@ func (c *Module) Execute(token string, ModuleType string, ModuleName string, Opt
 		return nil, errors.New("Unprocessable Content")
 	}
 	if errMsg, ok := resp["error_message"]; ok {
-		return nil, errors.New(errMsg.(string))
+		errMsgBytes, ok := errMsg.([]uint8)
+		if !ok {
+			return nil, errors.New("error_message is not a string")
+		}
+		return nil, errors.New(string(errMsgBytes))
 	}
 	return resp, nil
 }

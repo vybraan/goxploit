@@ -11,6 +11,7 @@ import (
 type MsfLibraryGenerator struct{}
 
 func (g *MsfLibraryGenerator) GenerateLibrary() error {
+	println("Starting the library generation process...")
 	scraper := MsfPayloadScraper{}
 	outputDir := "../../pkg/msfrpc/generated"
 
@@ -83,7 +84,10 @@ func (g *MsfLibraryGenerator) GenerateLibrary() error {
 			builder.WriteString("\tif result, ok := resp[\"result\"]; ok && result == \"failure\" {\n")
 			builder.WriteString("\t\treturn nil, errors.New(\"Unprocessable Content\")\n\t}\n")
 			builder.WriteString("\tif errMsg, ok := resp[\"error_message\"]; ok {\n")
-			builder.WriteString("\t\treturn nil, errors.New(errMsg.(string))\n\t}\n")
+			builder.WriteString("\t\terrMsgBytes, ok := errMsg.([]uint8)")
+			builder.WriteString("\n\t\tif !ok {\n")
+			builder.WriteString("\t\t\treturn nil, errors.New(\"error_message is not a string\")\n\t\t}\n")
+			builder.WriteString("\t\treturn nil, errors.New(string(errMsgBytes))\n\t}\n")
 			builder.WriteString("\treturn resp, nil\n}\n\n")
 		}
 
@@ -94,6 +98,9 @@ func (g *MsfLibraryGenerator) GenerateLibrary() error {
 		}
 
 	}
+
+	println("Library generation completed successfully.")
+	println("Generated files are located in:", outputDir)
 
 	return nil
 }

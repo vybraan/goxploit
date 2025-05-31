@@ -24,7 +24,11 @@ func (c *Job) List(token string) (map[string]interface{}, error) {
 		return nil, errors.New("Unprocessable Content")
 	}
 	if errMsg, ok := resp["error_message"]; ok {
-		return nil, errors.New(errMsg.(string))
+		errMsgBytes, ok := errMsg.([]uint8)
+		if !ok {
+			return nil, errors.New("error_message is not a string")
+		}
+		return nil, errors.New(string(errMsgBytes))
 	}
 	return resp, nil
 }
@@ -38,7 +42,11 @@ func (c *Job) Info(token string, jobId string) (map[string]interface{}, error) {
 		return nil, errors.New("Unprocessable Content")
 	}
 	if errMsg, ok := resp["error_message"]; ok {
-		return nil, errors.New(errMsg.(string))
+		errMsgBytes, ok := errMsg.([]uint8)
+		if !ok {
+			return nil, errors.New("error_message is not a string")
+		}
+		return nil, errors.New(string(errMsgBytes))
 	}
 	return resp, nil
 }
@@ -52,7 +60,11 @@ func (c *Job) Stop(token string, jobId string) (map[string]interface{}, error) {
 		return nil, errors.New("Unprocessable Content")
 	}
 	if errMsg, ok := resp["error_message"]; ok {
-		return nil, errors.New(errMsg.(string))
+		errMsgBytes, ok := errMsg.([]uint8)
+		if !ok {
+			return nil, errors.New("error_message is not a string")
+		}
+		return nil, errors.New(string(errMsgBytes))
 	}
 	return resp, nil
 }

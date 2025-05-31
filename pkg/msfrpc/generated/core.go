@@ -24,7 +24,11 @@ func (c *Core) AddModulePath(token string, Path string) (map[string]interface{},
 		return nil, errors.New("Unprocessable Content")
 	}
 	if errMsg, ok := resp["error_message"]; ok {
-		return nil, errors.New(errMsg.(string))
+		errMsgBytes, ok := errMsg.([]uint8)
+		if !ok {
+			return nil, errors.New("error_message is not a string")
+		}
+		return nil, errors.New(string(errMsgBytes))
 	}
 	return resp, nil
 }
@@ -38,7 +42,11 @@ func (c *Core) ModuleStats(token string) (map[string]interface{}, error) {
 		return nil, errors.New("Unprocessable Content")
 	}
 	if errMsg, ok := resp["error_message"]; ok {
-		return nil, errors.New(errMsg.(string))
+		errMsgBytes, ok := errMsg.([]uint8)
+		if !ok {
+			return nil, errors.New("error_message is not a string")
+		}
+		return nil, errors.New(string(errMsgBytes))
 	}
 	return resp, nil
 }
@@ -52,7 +60,11 @@ func (c *Core) ReloadModules(token string) (map[string]interface{}, error) {
 		return nil, errors.New("Unprocessable Content")
 	}
 	if errMsg, ok := resp["error_message"]; ok {
-		return nil, errors.New(errMsg.(string))
+		errMsgBytes, ok := errMsg.([]uint8)
+		if !ok {
+			return nil, errors.New("error_message is not a string")
+		}
+		return nil, errors.New(string(errMsgBytes))
 	}
 	return resp, nil
 }
@@ -66,7 +78,11 @@ func (c *Core) Save(token string) (map[string]interface{}, error) {
 		return nil, errors.New("Unprocessable Content")
 	}
 	if errMsg, ok := resp["error_message"]; ok {
-		return nil, errors.New(errMsg.(string))
+		errMsgBytes, ok := errMsg.([]uint8)
+		if !ok {
+			return nil, errors.New("error_message is not a string")
+		}
+		return nil, errors.New(string(errMsgBytes))
 	}
 	return resp, nil
 }
@@ -80,7 +96,11 @@ func (c *Core) Setg(token string, OptionName string, OptionValue string) (map[st
 		return nil, errors.New("Unprocessable Content")
 	}
 	if errMsg, ok := resp["error_message"]; ok {
-		return nil, errors.New(errMsg.(string))
+		errMsgBytes, ok := errMsg.([]uint8)
+		if !ok {
+			return nil, errors.New("error_message is not a string")
+		}
+		return nil, errors.New(string(errMsgBytes))
 	}
 	return resp, nil
 }
@@ -94,7 +114,11 @@ func (c *Core) Unsetg(token string, OptionName string) (map[string]interface{}, 
 		return nil, errors.New("Unprocessable Content")
 	}
 	if errMsg, ok := resp["error_message"]; ok {
-		return nil, errors.New(errMsg.(string))
+		errMsgBytes, ok := errMsg.([]uint8)
+		if !ok {
+			return nil, errors.New("error_message is not a string")
+		}
+		return nil, errors.New(string(errMsgBytes))
 	}
 	return resp, nil
 }
@@ -108,7 +132,11 @@ func (c *Core) ThreadList(token string) (map[string]interface{}, error) {
 		return nil, errors.New("Unprocessable Content")
 	}
 	if errMsg, ok := resp["error_message"]; ok {
-		return nil, errors.New(errMsg.(string))
+		errMsgBytes, ok := errMsg.([]uint8)
+		if !ok {
+			return nil, errors.New("error_message is not a string")
+		}
+		return nil, errors.New(string(errMsgBytes))
 	}
 	return resp, nil
 }
@@ -122,7 +150,11 @@ func (c *Core) ThreadKill(token string, ThreadID string) (map[string]interface{}
 		return nil, errors.New("Unprocessable Content")
 	}
 	if errMsg, ok := resp["error_message"]; ok {
-		return nil, errors.New(errMsg.(string))
+		errMsgBytes, ok := errMsg.([]uint8)
+		if !ok {
+			return nil, errors.New("error_message is not a string")
+		}
+		return nil, errors.New(string(errMsgBytes))
 	}
 	return resp, nil
 }
@@ -136,7 +168,11 @@ func (c *Core) Version(token string) (map[string]interface{}, error) {
 		return nil, errors.New("Unprocessable Content")
 	}
 	if errMsg, ok := resp["error_message"]; ok {
-		return nil, errors.New(errMsg.(string))
+		errMsgBytes, ok := errMsg.([]uint8)
+		if !ok {
+			return nil, errors.New("error_message is not a string")
+		}
+		return nil, errors.New(string(errMsgBytes))
 	}
 	return resp, nil
 }
@@ -150,7 +186,11 @@ func (c *Core) Stop(token string) (map[string]interface{}, error) {
 		return nil, errors.New("Unprocessable Content")
 	}
 	if errMsg, ok := resp["error_message"]; ok {
-		return nil, errors.New(errMsg.(string))
+		errMsgBytes, ok := errMsg.([]uint8)
+		if !ok {
+			return nil, errors.New("error_message is not a string")
+		}
+		return nil, errors.New(string(errMsgBytes))
 	}
 	return resp, nil
 }
